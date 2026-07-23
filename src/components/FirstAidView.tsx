@@ -301,7 +301,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
       </div>
 
       {/* Main Container Area */}
-      <div className={`${isIpad ? 'flex-1 justify-center' : 'mb-auto justify-start'} bg-white w-full rounded-2xl border-2 border-brand-sand p-2 sm:p-4 py-3 sm:py-4 shadow-sm flex flex-col items-center overflow-y-auto min-h-0`}>
+      <div className="flex-1 bg-white rounded-2xl border-2 border-brand-sand p-3 sm:p-4 shadow-sm flex flex-col justify-center items-center overflow-y-auto min-h-0">
         <AnimatePresence mode="wait">
           {activeTool === 'breathing' && (
             <motion.div
@@ -309,15 +309,15 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="flex-1 flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5 my-auto w-full max-w-sm"
+              className="flex-1 flex flex-col items-center justify-center space-y-3.5 my-auto w-full max-w-sm"
             >
-              <div className="text-center space-y-0.5 sm:space-y-1">
+              <div className="text-center space-y-1">
                 <h3 className="text-base sm:text-lg font-black text-gray-800">🌬️ 4-4-4-4 方形呼吸法</h3>
-                <p className="text-[11px] sm:text-sm font-bold text-brand-moss">吸氣 4 秒 · 閉氣 4 秒 · 呼氣 4 秒 · 閉氣 4 秒</p>
+                <p className="text-xs sm:text-sm font-bold text-brand-moss">吸氣 4 秒 · 閉氣 4 秒 · 呼氣 4 秒 · 閉氣 4 秒</p>
               </div>
 
               {/* Dynamic step visual card */}
-              <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-2xl p-2 sm:p-4 border-2 border-brand-sand/80 shadow-xs space-y-1.5 sm:space-y-3 w-full flex flex-col items-center justify-center">
+              <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-2xl p-3 sm:p-4 border-2 border-brand-sand/80 shadow-xs space-y-3 w-full flex flex-col items-center justify-center">
                 <p className="text-xs sm:text-sm font-black text-gray-700 text-center select-none">跟著方形慢慢呼吸，幫助身體放鬆：</p>
                 
                 {/* Breathing Circle Visualizer in the center */}
@@ -383,7 +383,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           {breathingPhase === 'completed' && '完成'}
                         </span>
                         {breathingPhase !== 'idle' && breathingPhase !== 'completed' && (
-                          <span className="text-lg sm:text-xl font-black text-brand-moss font-mono mt-0.5">
+                          <span className="text-base sm:text-lg font-black text-brand-moss font-mono mt-0.5">
                             {breathingTimer}
                           </span>
                         )}
@@ -463,24 +463,24 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="flex-1 flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5 my-auto w-full max-w-sm"
+              className={`flex-1 flex flex-col items-center justify-center space-y-2 my-auto w-full ${isIpad ? 'max-w-2xl sm:space-y-2' : 'max-w-sm sm:space-y-3.5'}`}
             >
               {!isGroundingStarted ? (
                 /* Entrance Landing Page */
-                <div className="w-full flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5">
+                <div className={`w-full flex flex-col items-center justify-center space-y-2 ${isIpad ? 'sm:space-y-3' : 'sm:space-y-3.5'}`}>
                   <div className="text-center space-y-1">
-                    <div className="w-14 h-14 bg-brand-sage/10 text-brand-sage rounded-full flex items-center justify-center mx-auto shadow-inner border border-brand-sage/20">
-                      <Eye className="w-7 h-7" />
+                    <div className={`bg-brand-sage/10 text-brand-sage rounded-full flex items-center justify-center mx-auto shadow-inner border border-brand-sage/20 ${isIpad ? 'w-16 h-16' : 'w-14 h-14'}`}>
+                      <Eye className={isIpad ? 'w-8 h-8' : 'w-7 h-7'} />
                     </div>
-                    <h3 className="text-base sm:text-lg font-black text-gray-800">5-4-3-2-1 五感著陸</h3>
-                    <p className="text-xs sm:text-sm font-bold text-gray-600 leading-relaxed max-w-xs mx-auto">
+                    <h3 className={`font-black text-gray-800 ${isIpad ? 'text-xl sm:text-2xl mt-2' : 'text-base sm:text-lg'}`}>5-4-3-2-1 五感著陸</h3>
+                    <p className={`font-bold text-gray-600 leading-relaxed mx-auto ${isIpad ? 'text-sm sm:text-base max-w-sm' : 'text-xs sm:text-sm max-w-xs'}`}>
                       一個協助你回到當下的練習 🌸
                     </p>
                   </div>
 
 
                   <div className="space-y-2 w-full text-center">
-                    <div className="flex gap-2.5 w-full max-w-[270px] sm:max-w-[360px] mx-auto items-center justify-center">
+                    <div className={`flex gap-2.5 w-full mx-auto items-center justify-center ${isIpad ? 'max-w-[420px]' : 'max-w-[270px] sm:max-w-[360px]'}`}>
                       <button
                         onClick={() => {
                           playClickSound(580, 'sine');
@@ -490,8 +490,8 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           setGroundingChecked({});
                           safeSpeak("開始五感著陸練習。第一步，視覺：尋找 5 件目光所及的事物。觀看身處空間內的事物即可，例如窗外的樹、桌上的筆、牆上的時鐘。");
                         }}
-                        className="flex-1 py-3 bg-brand-sage hover:bg-brand-moss text-white rounded-full text-xs sm:text-sm font-black tracking-wider transition shadow-sm active:scale-95 cursor-pointer border-0 flex items-center justify-center gap-2"
-                        style={{ minHeight: '44px' }}
+                        className={`flex-1 py-3 bg-brand-sage hover:bg-brand-moss text-white rounded-full font-black tracking-wider transition shadow-sm active:scale-95 cursor-pointer border-0 flex items-center justify-center gap-2 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}
+                        style={{ minHeight: isIpad ? '52px' : '44px' }}
                       >
                         <Play className="w-4 h-4 fill-white shrink-0" />
                         <span>開始五感著陸</span>
@@ -505,10 +505,10 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                             ? 'bg-brand-sage text-white border-brand-sage hover:bg-brand-moss' 
                             : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-50'
                         }`}
-                        style={{ minHeight: '44px', minWidth: '44px' }}
+                        style={{ minHeight: isIpad ? '52px' : '44px', minWidth: isIpad ? '52px' : '44px' }}
                         title="語音引導開關"
                       >
-                        {isVoiceEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+                        {isVoiceEnabled ? <Volume2 className={isIpad ? "w-5 h-5" : "w-4 h-4"} /> : <VolumeX className={isIpad ? "w-5 h-5" : "w-4 h-4"} />}
                       </button>
                     </div>
                     <p className="text-xs font-medium text-center text-slate-400">
@@ -518,26 +518,26 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                 </div>
               ) : isGroundingFinished ? (
                 /* Finished Success Page */
-                <div className="w-full flex flex-col items-center justify-center space-y-2 sm:space-y-3.5">
+                <div className={`w-full flex flex-col items-center justify-center space-y-2 ${isIpad ? 'sm:space-y-3' : 'sm:space-y-3.5'}`}>
                   <div className="text-center space-y-1">
-                    <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner border border-emerald-200">
-                      <CheckCircle2 className="w-7 h-7" />
+                    <div className={`bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner border border-emerald-200 ${isIpad ? 'w-16 h-16' : 'w-14 h-14'}`}>
+                      <CheckCircle2 className={isIpad ? 'w-8 h-8' : 'w-7 h-7'} />
                     </div>
-                    <h3 className="text-base sm:text-lg font-black text-gray-800">🎉 著陸完成！🎉</h3>
+                    <h3 className={`font-black text-gray-800 ${isIpad ? 'text-xl sm:text-2xl mt-1' : 'text-base sm:text-lg'}`}>🎉 著陸完成！🎉</h3>
                   </div>
 
-                  <div className="bg-brand-sand/30 p-2.5 sm:p-4 rounded-xl border border-brand-sand text-center space-y-1.5 sm:space-y-2 w-full">
-                    <span className="text-xs font-black text-brand-moss bg-brand-sand/60 px-2.5 py-0.5 rounded-full inline-block">
+                  <div className={`bg-brand-sand/30 p-2.5 rounded-xl border border-brand-sand text-center w-full ${isIpad ? 'sm:p-3 sm:space-y-2 space-y-2' : 'sm:p-3 space-y-1.5 sm:space-y-2'}`}>
+                    <span className={`font-black text-brand-moss bg-brand-sand/60 rounded-full inline-block ${isIpad ? 'text-sm px-4 py-1.5' : 'text-xs px-2.5 py-0.5'}`}>
                       5-4-3-2-1 五感著陸
                     </span>
-                    <p className="text-xs sm:text-sm font-black text-gray-700 leading-relaxed">
+                    <p className={`font-black text-gray-700 leading-relaxed ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                       「 你做到了！<br />
                       你好棒！<br />
                       下次再來練習喔！」
                     </p>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-2.5 w-full">
+                  <div className={`grid grid-cols-2 gap-2.5 w-full ${isIpad ? 'max-w-lg mx-auto mt-2' : ''}`}>
                     <button
                       onClick={() => {
                         playClickSound(580, 'sine');
@@ -547,26 +547,23 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                         setGroundingChecked({});
                         safeSpeak("重新開始著陸練習。第一步，視覺：尋找 5 件目光所及的事物。觀看身處空間內的事物即可，例如窗外的樹、桌上的筆、牆上的時鐘。");
                       }}
-                      className="py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs sm:text-sm font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-xs border-0"
-                      style={{ minHeight: '42px' }}
+                      className={`py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-xs border-0 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}
+                      style={{ minHeight: isIpad ? '52px' : '42px' }}
                     >
-                      <RefreshCw className="w-4 h-4" />
+                      <RefreshCw className={isIpad ? 'w-5 h-5' : 'w-4 h-4'} />
                       <span>再試一次</span>
                     </button>
 
                     <button
                       onClick={() => {
                         playClickSound(400, 'sine');
-                        if (onGoToHome) {
-                          onGoToHome();
-                        } else {
-                          setIsGroundingStarted(false);
-                          setIsGroundingFinished(false);
-                          setGroundingStep(1);
-                        }
+                        setIsGroundingStarted(false);
+                        setIsGroundingFinished(false);
+                        setGroundingStep(1);
+                        setGroundingChecked({});
                       }}
-                      className="py-2.5 bg-brand-sage hover:bg-brand-moss text-white rounded-xl text-xs sm:text-sm font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-xs border-0"
-                      style={{ minHeight: '42px' }}
+                      className={`py-2.5 bg-brand-sage hover:bg-brand-moss text-white rounded-xl font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-xs border-0 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}
+                      style={{ minHeight: isIpad ? '52px' : '42px' }}
                     >
                       <span>回到首頁</span>
                     </button>
@@ -574,16 +571,16 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                 </div>
               ) : (
                 /* Step by Step Flow */
-                <div className="w-full flex flex-col items-center justify-center space-y-2.5 sm:space-y-3 pb-3 sm:pb-0">
+                <div className={`w-full flex flex-col items-center justify-center space-y-2 ${isIpad ? 'sm:space-y-5' : 'sm:space-y-3'}`}>
                   {/* Header */}
                   <div className="text-center">
-                    <span className="inline-block text-xs font-black text-brand-moss bg-brand-sage/10 px-3 py-1 rounded-full border border-brand-sage/20">
+                    <span className={`inline-block font-black text-brand-moss bg-brand-sage/10 rounded-full border border-brand-sage/20 ${isIpad ? 'text-sm px-4 py-1.5' : 'text-xs px-3 py-1'}`}>
                       五感著陸 - 步驟 {groundingStep} / 5
                     </span>
                   </div>
 
                   {/* Dynamic step visual card */}
-                  <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-xl p-3 sm:p-4 border-2 border-brand-sand/80 shadow-xs space-y-2 sm:space-y-3 w-full min-h-[160px] sm:min-h-0 flex flex-col justify-center">
+                  <div className={`bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-xl p-2.5 border-2 border-brand-sand/80 shadow-xs space-y-2 w-full ${isIpad ? 'sm:p-6 sm:space-y-4' : 'sm:p-4 sm:space-y-3'}`}>
                     <AnimatePresence mode="wait">
                       {groundingStep === 1 && (
                         <motion.div
@@ -591,19 +588,19 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
+                          className="space-y-2 text-center sm:text-left"
                         >
-                          <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
+                          <h4 className={`font-black text-slate-800 leading-snug ${isIpad ? 'text-base sm:text-xl' : 'text-sm sm:text-base'}`}>
                             👀 第一步：視覺
                           </h4>
-                          <p className="text-xs sm:text-sm font-black text-emerald-800">
+                          <p className={`font-black text-emerald-800 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                             尋找 5 件目光所及的事物
                           </p>
                           <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
-                            <p className="text-xs sm:text-sm font-bold text-amber-900">
+                            <p className={`font-bold text-amber-900 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                               💡 觀看身處空間內的事物即可
                             </p>
-                            <p className="text-xs font-medium text-amber-800">
+                            <p className={`font-medium text-amber-800 ${isIpad ? 'text-sm' : 'text-xs'}`}>
                               （例如：窗外的樹、桌上的筆、牆上的時鐘）
                             </p>
                           </div>
@@ -616,19 +613,19 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
+                          className="space-y-2 text-center sm:text-left"
                         >
-                          <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
+                          <h4 className={`font-black text-slate-800 leading-snug ${isIpad ? 'text-base sm:text-xl' : 'text-sm sm:text-base'}`}>
                             🖐️ 第二步：觸覺
                           </h4>
-                          <p className="text-xs sm:text-sm font-black text-emerald-800">
+                          <p className={`font-black text-emerald-800 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                             尋找 4 件可以觸摸的物件
                           </p>
                           <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
-                            <p className="text-xs sm:text-sm font-bold text-amber-900">
+                            <p className={`font-bold text-amber-900 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                               💡 用手觸摸屬於自己的物品即可
                             </p>
-                            <p className="text-xs font-medium text-amber-800">
+                            <p className={`font-medium text-amber-800 ${isIpad ? 'text-sm' : 'text-xs'}`}>
                               （例如：你的衣服、文具、手錶）
                             </p>
                           </div>
@@ -641,16 +638,16 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
+                          className="space-y-2 text-center sm:text-left"
                         >
-                          <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
+                          <h4 className={`font-black text-slate-800 leading-snug ${isIpad ? 'text-base sm:text-xl' : 'text-sm sm:text-base'}`}>
                             👂 第三步：聽覺
                           </h4>
-                          <p className="text-xs sm:text-sm font-black text-emerald-800">
+                          <p className={`font-black text-emerald-800 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                             尋找 3 種可以聽見的聲音
                           </p>
                           <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
-                            <p className="text-xs sm:text-sm font-bold text-amber-900">
+                            <p className={`font-bold text-amber-900 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                               💡 靜心聆聽即可
                             </p>
                           </div>
@@ -663,19 +660,19 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
+                          className="space-y-2 text-center sm:text-left"
                         >
-                          <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
+                          <h4 className={`font-black text-slate-800 leading-snug ${isIpad ? 'text-base sm:text-xl' : 'text-sm sm:text-base'}`}>
                             👃 第四步：嗅覺
                           </h4>
-                          <p className="text-xs sm:text-sm font-black text-emerald-800">
+                          <p className={`font-black text-emerald-800 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                             尋找 2 種可以聞到的氣味
                           </p>
                           <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
-                            <p className="text-xs sm:text-sm font-bold text-amber-900">
+                            <p className={`font-bold text-amber-900 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                               💡 輕輕留意身邊的氣味
                             </p>
-                            <p className="text-xs font-medium text-amber-800">
+                            <p className={`font-medium text-amber-800 ${isIpad ? 'text-sm' : 'text-xs'}`}>
                               （例如：清新的空氣、書本的氣味）
                             </p>
                           </div>
@@ -688,16 +685,16 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
+                          className="space-y-2 text-center sm:text-left"
                         >
-                          <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
+                          <h4 className={`font-black text-slate-800 leading-snug ${isIpad ? 'text-base sm:text-xl' : 'text-sm sm:text-base'}`}>
                             👄 第五步：味覺
                           </h4>
-                          <p className="text-xs sm:text-sm font-black text-emerald-800">
+                          <p className={`font-black text-emerald-800 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                             尋找 1 種味道
                           </p>
                           <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
-                            <p className="text-xs sm:text-sm font-bold text-amber-900">
+                            <p className={`font-bold text-amber-900 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                               💡 可飲用自帶清水，或回想喜歡的味道
                             </p>
                           </div>
@@ -707,7 +704,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                   </div>
 
                   {/* Primary Action and TTS */}
-                  <div className="flex gap-2.5 w-full items-center justify-between">
+                  <div className={`flex gap-2.5 w-full items-center justify-between ${isIpad ? 'max-w-md mx-auto mt-2' : ''}`}>
                     <button
                       onClick={() => {
                         playClickSound(520, 'sine');
@@ -727,8 +724,8 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           safeSpeak("太棒了！你完成了五感著陸練習！你做得真棒！");
                         }
                       }}
-                      className="flex-1 py-3 bg-brand-sage hover:bg-brand-moss text-white rounded-xl text-xs sm:text-sm font-black transition cursor-pointer flex items-center justify-center gap-2 active:scale-95 shadow-xs border-0"
-                      style={{ minHeight: '42px' }}
+                      className={`flex-1 py-3 bg-brand-sage hover:bg-brand-moss text-white rounded-xl font-black transition cursor-pointer flex items-center justify-center gap-2 active:scale-95 shadow-xs border-0 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}
+                      style={{ minHeight: isIpad ? '52px' : '42px' }}
                     >
                       {groundingStep === 1 && <span>✅ 我已找到 5 件</span>}
                       {groundingStep === 2 && <span>✅ 我已找到 4 件</span>}
@@ -752,10 +749,10 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           ? 'bg-brand-sage text-white border-brand-sage hover:bg-brand-moss' 
                           : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-50'
                       }`}
-                      style={{ minHeight: '42px', minWidth: '42px' }}
+                      style={{ minHeight: isIpad ? '52px' : '42px', minWidth: isIpad ? '52px' : '42px' }}
                       title="語音引導開關"
                     >
-                      {isVoiceEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+                      {isVoiceEnabled ? <Volume2 className={isIpad ? "w-5 h-5" : "w-4 h-4"} /> : <VolumeX className={isIpad ? "w-5 h-5" : "w-4 h-4"} />}
                     </button>
                   </div>
 
@@ -775,23 +772,23 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="flex-1 flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5 my-auto w-full max-w-sm"
+              className={`flex-1 flex flex-col items-center justify-center space-y-2 my-auto w-full ${isIpad ? 'max-w-2xl sm:space-y-4' : 'max-w-sm sm:space-y-3.5'}`}
             >
               {!isGuiding ? (
                 /* Landing Entrance Screen */
-                <div className="w-full flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5">
-                  <div className="text-center space-y-0.5 sm:space-y-1">
-                    <div className="w-14 h-14 bg-brand-sage/10 text-brand-sage rounded-full flex items-center justify-center mx-auto shadow-inner border border-brand-sage/20">
-                      <HelpCircle className="w-7 h-7" />
+                <div className={`w-full flex flex-col items-center justify-center space-y-2 ${isIpad ? 'sm:space-y-4' : 'sm:space-y-3.5'}`}>
+                  <div className="text-center space-y-1">
+                    <div className={`bg-brand-sage/10 text-brand-sage rounded-full flex items-center justify-center mx-auto shadow-inner border border-brand-sage/20 ${isIpad ? 'w-16 h-16' : 'w-14 h-14'}`}>
+                      <HelpCircle className={isIpad ? 'w-8 h-8' : 'w-7 h-7'} />
                     </div>
-                    <h3 className="text-base sm:text-lg font-black text-slate-800">🏡 安心空間</h3>
-                    <p className="text-xs sm:text-sm font-semibold text-slate-500 leading-relaxed">
+                    <h3 className={`font-black text-slate-800 ${isIpad ? 'text-xl sm:text-2xl mt-2' : 'text-base sm:text-lg'}`}>安心空間</h3>
+                    <p className={`font-semibold text-slate-500 leading-relaxed ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}>
                       陪伴你放鬆心情、加油打氣的溫暖空間。
                     </p>
                   </div>
 
                   <div className="w-full space-y-2 text-center">
-                    <div className="flex gap-2.5 w-full max-w-[270px] sm:max-w-[360px] mx-auto items-center justify-center">
+                    <div className={`flex gap-2.5 w-full mx-auto items-center justify-center ${isIpad ? 'max-w-[420px]' : 'max-w-[270px] sm:max-w-[360px]'}`}>
                       <button
                         onClick={() => {
                           playClickSound(580, 'sine');
@@ -801,8 +798,8 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           const p = HAVEN_PASSAGES[randIdx];
                           safeSpeak(p.guide + " " + p.quote);
                         }}
-                        className="flex-1 py-3 bg-brand-sage hover:bg-brand-moss text-white rounded-full text-xs sm:text-sm font-black tracking-wider transition shadow-sm active:scale-95 cursor-pointer border-0 flex items-center justify-center gap-2"
-                        style={{ minHeight: '44px' }}
+                        className={`flex-1 py-3 bg-brand-sage hover:bg-brand-moss text-white rounded-full font-black tracking-wider transition shadow-sm active:scale-95 cursor-pointer border-0 flex items-center justify-center gap-2 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-sm'}`}
+                        style={{ minHeight: isIpad ? '52px' : '44px' }}
                       >
                         <Play className="w-4 h-4 fill-white shrink-0" />
                         <span>開始安心引導</span>
@@ -816,10 +813,10 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                             ? 'bg-brand-sage text-white border-brand-sage hover:bg-brand-moss' 
                             : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-50'
                         }`}
-                        style={{ minHeight: '44px', minWidth: '44px' }}
+                        style={{ minHeight: isIpad ? '52px' : '44px', minWidth: isIpad ? '52px' : '44px' }}
                         title="語音引導開關"
                       >
-                        {isVoiceEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4" />}
+                        {isVoiceEnabled ? <Volume2 className={isIpad ? "w-5 h-5" : "w-4 h-4"} /> : <VolumeX className={isIpad ? "w-5 h-5" : "w-4 h-4"} />}
                       </button>
                     </div>
                     
@@ -828,22 +825,22 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                 </div>
               ) : (
                 /* Interactive Guidance Screen */
-                <div className="flex-1 flex flex-col justify-between space-y-2 sm:space-y-3 py-1">
+                <div className={`flex-1 flex flex-col justify-between py-1 w-full ${isIpad ? 'max-w-3xl mx-auto space-y-2' : 'space-y-2 sm:space-y-3 max-w-sm mx-auto'}`}>
                   {/* Header Indicator */}
                   <div className="text-center space-y-1">
-                    <h3 className="text-base font-black text-emerald-800 tracking-tight">
-                      🏡 【 {HAVEN_PASSAGES[currentPassageIdx].title} 】
+                    <h3 className={`font-black text-emerald-800 tracking-tight ${isIpad ? 'text-base sm:text-lg' : 'text-base'}`}>
+                      【 {HAVEN_PASSAGES[currentPassageIdx].title} 】
                     </h3>
                   </div>
 
                   {/* Healing Page Box */}
-                  <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-2xl p-2.5 sm:p-4 border-2 border-brand-sand/80 shadow-xs text-center space-y-2.5 sm:space-y-3.5 max-w-sm mx-auto w-full">
+                  <div className={`bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-2xl border-2 border-brand-sand/80 shadow-xs text-center mx-auto w-full ${isIpad ? 'p-4 space-y-2' : 'p-2.5 sm:p-3 space-y-1.5 sm:space-y-3.5'}`}>
                     {/* Text Guide */}
                     <div className="space-y-1 text-left">
-                      <span className="text-xs uppercase font-black tracking-wider text-brand-sage block select-none">
+                      <span className={`uppercase font-black tracking-wider text-brand-sage block select-none ${isIpad ? 'text-sm' : 'text-xs'}`}>
                         🧭 呼吸與想像導引
                       </span>
-                      <p className="text-xs sm:text-sm font-bold text-slate-700 leading-relaxed font-sans">
+                      <p className={`font-bold text-slate-700 leading-relaxed font-sans ${isIpad ? 'text-base sm:text-lg' : 'text-xs sm:text-sm'}`}>
                         {HAVEN_PASSAGES[currentPassageIdx].guide}
                       </p>
                     </div>
@@ -852,18 +849,18 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                     <div className="border-t border-dashed border-brand-sand my-0.5" />
 
                     {/* Warm Quote */}
-                    <div className="space-y-1 text-left bg-white/70 p-2 sm:p-2.5 rounded-xl border border-brand-sand/40">
-                      <span className="text-xs uppercase font-black tracking-wider text-amber-700 block select-none">
+                    <div className={`text-left bg-white/70 rounded-xl border border-brand-sand/40 ${isIpad ? 'p-3 space-y-1' : 'p-2 sm:p-2.5 space-y-1'}`}>
+                      <span className={`uppercase font-black tracking-wider text-amber-700 block select-none ${isIpad ? 'text-sm' : 'text-xs'}`}>
                         💖 安心加油小語
                       </span>
-                      <p className="text-xs sm:text-sm font-black text-emerald-800 leading-relaxed italic font-sans">
+                      <p className={`font-black text-emerald-800 leading-relaxed italic font-sans ${isIpad ? 'text-base sm:text-lg' : 'text-xs sm:text-sm'}`}>
                         {HAVEN_PASSAGES[currentPassageIdx].quote}
                       </p>
                     </div>
                   </div>
 
                   {/* Sub-Actions Bar (換一段、語音、結束) */}
-                  <div className="grid grid-cols-3 gap-2 max-w-xs mx-auto w-full">
+                  <div className={`grid grid-cols-3 gap-2 w-full ${isIpad ? 'max-w-2xl mx-auto mt-2' : 'max-w-xs mx-auto'}`}>
                     {/* 1. 換一段 (Next Segment) */}
                     <button
                       onClick={() => {
@@ -878,11 +875,11 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                         const p = HAVEN_PASSAGES[nextIdx];
                         safeSpeak(p.guide + " " + p.quote);
                       }}
-                      className="py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl text-xs sm:text-[13px] font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-xs border-0"
-                      style={{ minHeight: '40px' }}
+                      className={`py-2.5 bg-amber-500 hover:bg-amber-600 text-white rounded-xl font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-xs border-0 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-[13px]'}`}
+                      style={{ minHeight: isIpad ? '52px' : '40px' }}
                       title="隨記切換下一篇溫暖引導"
                     >
-                      <RefreshCw className="w-3.5 h-3.5" />
+                      <RefreshCw className={isIpad ? 'w-4 h-4' : 'w-3.5 h-3.5'} />
                       <span>換一段</span>
                     </button>
 
@@ -892,15 +889,15 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                         const p = HAVEN_PASSAGES[currentPassageIdx];
                         toggleVoice(p.guide + " " + p.quote);
                       }}
-                      className={`py-2.5 rounded-xl text-xs sm:text-[13px] font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-xs border ${
+                      className={`py-2.5 rounded-xl font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-xs border ${
                         isVoiceEnabled
                           ? 'bg-brand-sage text-white border-brand-sage hover:bg-brand-moss'
                           : 'bg-white text-gray-400 border-gray-200 hover:bg-gray-50'
-                      }`}
-                      style={{ minHeight: '40px' }}
+                      } ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-[13px]'}`}
+                      style={{ minHeight: isIpad ? '52px' : '40px' }}
                       title="語音引導開關"
                     >
-                      {isVoiceEnabled ? <Volume2 className="w-3.5 h-3.5" /> : <VolumeX className="w-3.5 h-3.5" />}
+                      {isVoiceEnabled ? <Volume2 className={isIpad ? 'w-4 h-4' : 'w-3.5 h-3.5'} /> : <VolumeX className={isIpad ? 'w-4 h-4' : 'w-3.5 h-3.5'} />}
                       <span>語音</span>
                     </button>
 
@@ -913,8 +910,8 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                         }
                         setIsGuiding(false);
                       }}
-                      className="py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-xs sm:text-[13px] font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-2xs border border-gray-200"
-                      style={{ minHeight: '40px' }}
+                      className={`py-2.5 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl font-black transition cursor-pointer flex items-center justify-center gap-1 active:scale-95 shadow-2xs border border-gray-200 ${isIpad ? 'text-sm sm:text-base' : 'text-xs sm:text-[13px]'}`}
+                      style={{ minHeight: isIpad ? '52px' : '40px' }}
                     >
                       <span>結束</span>
                     </button>
