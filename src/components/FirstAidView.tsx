@@ -252,7 +252,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
         {[
           { id: 'breathing', label: '呼吸練習', icon: <Wind className="w-4 h-4" /> },
           { id: 'grounding', label: '五感著陸', icon: <Eye className="w-4 h-4" /> },
-          { id: 'haven', label: '安心小基地', icon: <HelpCircle className="w-4 h-4" /> }
+          { id: 'haven', label: '安心空間', icon: <HelpCircle className="w-4 h-4" /> }
         ].map((tool) => (
           <button
             key={tool.id}
@@ -301,7 +301,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
       </div>
 
       {/* Main Container Area */}
-      <div className="flex-1 bg-white rounded-2xl border-2 border-brand-sand p-3 sm:p-4 shadow-sm flex flex-col justify-center items-center overflow-y-auto min-h-0">
+      <div className={`${isIpad ? 'flex-1 justify-center' : 'mb-auto justify-start'} bg-white w-full rounded-2xl border-2 border-brand-sand p-2 sm:p-4 py-3 sm:py-4 shadow-sm flex flex-col items-center overflow-y-auto min-h-0`}>
         <AnimatePresence mode="wait">
           {activeTool === 'breathing' && (
             <motion.div
@@ -309,15 +309,15 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="flex-1 flex flex-col items-center justify-center space-y-3.5 my-auto w-full max-w-sm"
+              className="flex-1 flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5 my-auto w-full max-w-sm"
             >
-              <div className="text-center space-y-1">
+              <div className="text-center space-y-0.5 sm:space-y-1">
                 <h3 className="text-base sm:text-lg font-black text-gray-800">🌬️ 4-4-4-4 方形呼吸法</h3>
-                <p className="text-xs sm:text-sm font-bold text-brand-moss">吸氣 4 秒 · 閉氣 4 秒 · 呼氣 4 秒 · 閉氣 4 秒</p>
+                <p className="text-[11px] sm:text-sm font-bold text-brand-moss">吸氣 4 秒 · 閉氣 4 秒 · 呼氣 4 秒 · 閉氣 4 秒</p>
               </div>
 
               {/* Dynamic step visual card */}
-              <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-2xl p-3 sm:p-4 border-2 border-brand-sand/80 shadow-xs space-y-3 w-full flex flex-col items-center justify-center">
+              <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-2xl p-2 sm:p-4 border-2 border-brand-sand/80 shadow-xs space-y-1.5 sm:space-y-3 w-full flex flex-col items-center justify-center">
                 <p className="text-xs sm:text-sm font-black text-gray-700 text-center select-none">跟著方形慢慢呼吸，幫助身體放鬆：</p>
                 
                 {/* Breathing Circle Visualizer in the center */}
@@ -463,11 +463,11 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="flex-1 flex flex-col items-center justify-center space-y-3.5 my-auto w-full max-w-sm"
+              className="flex-1 flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5 my-auto w-full max-w-sm"
             >
               {!isGroundingStarted ? (
                 /* Entrance Landing Page */
-                <div className="w-full flex flex-col items-center justify-center space-y-3.5">
+                <div className="w-full flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5">
                   <div className="text-center space-y-1">
                     <div className="w-14 h-14 bg-brand-sage/10 text-brand-sage rounded-full flex items-center justify-center mx-auto shadow-inner border border-brand-sage/20">
                       <Eye className="w-7 h-7" />
@@ -518,7 +518,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                 </div>
               ) : isGroundingFinished ? (
                 /* Finished Success Page */
-                <div className="w-full flex flex-col items-center justify-center space-y-3.5">
+                <div className="w-full flex flex-col items-center justify-center space-y-2 sm:space-y-3.5">
                   <div className="text-center space-y-1">
                     <div className="w-14 h-14 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto shadow-inner border border-emerald-200">
                       <CheckCircle2 className="w-7 h-7" />
@@ -526,7 +526,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                     <h3 className="text-base sm:text-lg font-black text-gray-800">🎉 著陸完成！🎉</h3>
                   </div>
 
-                  <div className="bg-brand-sand/30 p-4 rounded-xl border border-brand-sand text-center space-y-2 w-full">
+                  <div className="bg-brand-sand/30 p-2.5 sm:p-4 rounded-xl border border-brand-sand text-center space-y-1.5 sm:space-y-2 w-full">
                     <span className="text-xs font-black text-brand-moss bg-brand-sand/60 px-2.5 py-0.5 rounded-full inline-block">
                       5-4-3-2-1 五感著陸
                     </span>
@@ -574,7 +574,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                 </div>
               ) : (
                 /* Step by Step Flow */
-                <div className="w-full flex flex-col items-center justify-center space-y-3">
+                <div className="w-full flex flex-col items-center justify-center space-y-2.5 sm:space-y-3 pb-3 sm:pb-0">
                   {/* Header */}
                   <div className="text-center">
                     <span className="inline-block text-xs font-black text-brand-moss bg-brand-sage/10 px-3 py-1 rounded-full border border-brand-sage/20">
@@ -583,7 +583,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                   </div>
 
                   {/* Dynamic step visual card */}
-                  <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-xl p-3.5 sm:p-4 border-2 border-brand-sand/80 shadow-xs space-y-3 w-full">
+                  <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-xl p-3 sm:p-4 border-2 border-brand-sand/80 shadow-xs space-y-2 sm:space-y-3 w-full min-h-[160px] sm:min-h-0 flex flex-col justify-center">
                     <AnimatePresence mode="wait">
                       {groundingStep === 1 && (
                         <motion.div
@@ -591,7 +591,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-2 text-center sm:text-left"
+                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
                         >
                           <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
                             👀 第一步：視覺
@@ -599,7 +599,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           <p className="text-xs sm:text-sm font-black text-emerald-800">
                             尋找 5 件目光所及的事物
                           </p>
-                          <div className="bg-amber-50/80 p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
+                          <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
                             <p className="text-xs sm:text-sm font-bold text-amber-900">
                               💡 觀看身處空間內的事物即可
                             </p>
@@ -616,7 +616,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-2 text-center sm:text-left"
+                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
                         >
                           <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
                             🖐️ 第二步：觸覺
@@ -624,7 +624,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           <p className="text-xs sm:text-sm font-black text-emerald-800">
                             尋找 4 件可以觸摸的物件
                           </p>
-                          <div className="bg-amber-50/80 p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
+                          <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
                             <p className="text-xs sm:text-sm font-bold text-amber-900">
                               💡 用手觸摸屬於自己的物品即可
                             </p>
@@ -641,7 +641,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-2 text-center sm:text-left"
+                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
                         >
                           <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
                             👂 第三步：聽覺
@@ -649,7 +649,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           <p className="text-xs sm:text-sm font-black text-emerald-800">
                             尋找 3 種可以聽見的聲音
                           </p>
-                          <div className="bg-amber-50/80 p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
+                          <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
                             <p className="text-xs sm:text-sm font-bold text-amber-900">
                               💡 靜心聆聽即可
                             </p>
@@ -663,7 +663,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-2 text-center sm:text-left"
+                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
                         >
                           <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
                             👃 第四步：嗅覺
@@ -671,7 +671,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           <p className="text-xs sm:text-sm font-black text-emerald-800">
                             尋找 2 種可以聞到的氣味
                           </p>
-                          <div className="bg-amber-50/80 p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
+                          <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
                             <p className="text-xs sm:text-sm font-bold text-amber-900">
                               💡 輕輕留意身邊的氣味
                             </p>
@@ -688,7 +688,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           initial={{ opacity: 0, x: 10 }}
                           animate={{ opacity: 1, x: 0 }}
                           exit={{ opacity: 0, x: -10 }}
-                          className="space-y-2 text-center sm:text-left"
+                          className="space-y-1.5 sm:space-y-2 text-center sm:text-left"
                         >
                           <h4 className="text-sm sm:text-base font-black text-slate-800 leading-snug">
                             👄 第五步：味覺
@@ -696,7 +696,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                           <p className="text-xs sm:text-sm font-black text-emerald-800">
                             尋找 1 種味道
                           </p>
-                          <div className="bg-amber-50/80 p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
+                          <div className="bg-amber-50/80 p-2 sm:p-2.5 rounded-lg border border-amber-200/80 text-left space-y-1">
                             <p className="text-xs sm:text-sm font-bold text-amber-900">
                               💡 可飲用自帶清水，或回想喜歡的味道
                             </p>
@@ -775,16 +775,16 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -5 }}
-              className="flex-1 flex flex-col items-center justify-center space-y-3.5 my-auto w-full max-w-sm"
+              className="flex-1 flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5 my-auto w-full max-w-sm"
             >
               {!isGuiding ? (
                 /* Landing Entrance Screen */
-                <div className="w-full flex flex-col items-center justify-center space-y-3.5">
-                  <div className="text-center space-y-1">
+                <div className="w-full flex flex-col items-center justify-center space-y-1.5 sm:space-y-3.5">
+                  <div className="text-center space-y-0.5 sm:space-y-1">
                     <div className="w-14 h-14 bg-brand-sage/10 text-brand-sage rounded-full flex items-center justify-center mx-auto shadow-inner border border-brand-sage/20">
                       <HelpCircle className="w-7 h-7" />
                     </div>
-                    <h3 className="text-base sm:text-lg font-black text-slate-800">🏡 安心小基地</h3>
+                    <h3 className="text-base sm:text-lg font-black text-slate-800">🏡 安心空間</h3>
                     <p className="text-xs sm:text-sm font-semibold text-slate-500 leading-relaxed">
                       陪伴你放鬆心情、加油打氣的溫暖空間。
                     </p>
@@ -810,7 +810,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
 
                       {/* Voice Toggle Button */}
                       <button
-                        onClick={() => toggleVoice("安心小基地。陪伴你放鬆心情、加油打氣的溫暖空間。")}
+                        onClick={() => toggleVoice("安心空間。陪伴你放鬆心情、加油打氣的溫暖空間。")}
                         className={`p-2.5 border rounded-xl cursor-pointer active:scale-95 transition flex items-center justify-center shrink-0 ${
                           isVoiceEnabled 
                             ? 'bg-brand-sage text-white border-brand-sage hover:bg-brand-moss' 
@@ -828,7 +828,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                 </div>
               ) : (
                 /* Interactive Guidance Screen */
-                <div className="flex-1 flex flex-col justify-between space-y-3 py-1">
+                <div className="flex-1 flex flex-col justify-between space-y-2 sm:space-y-3 py-1">
                   {/* Header Indicator */}
                   <div className="text-center space-y-1">
                     <h3 className="text-base font-black text-emerald-800 tracking-tight">
@@ -837,7 +837,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                   </div>
 
                   {/* Healing Page Box */}
-                  <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-2xl p-3 sm:p-4 border-2 border-brand-sand/80 shadow-xs text-center space-y-3.5 max-w-sm mx-auto w-full">
+                  <div className="bg-gradient-to-br from-brand-sand/15 via-white to-brand-sage/10 rounded-2xl p-2.5 sm:p-4 border-2 border-brand-sand/80 shadow-xs text-center space-y-2.5 sm:space-y-3.5 max-w-sm mx-auto w-full">
                     {/* Text Guide */}
                     <div className="space-y-1 text-left">
                       <span className="text-xs uppercase font-black tracking-wider text-brand-sage block select-none">
@@ -852,7 +852,7 @@ export default function FirstAidView({ onGoToHome, onAwardFirstAidPoint, isIpad 
                     <div className="border-t border-dashed border-brand-sand my-0.5" />
 
                     {/* Warm Quote */}
-                    <div className="space-y-1 text-left bg-white/70 p-2.5 rounded-xl border border-brand-sand/40">
+                    <div className="space-y-1 text-left bg-white/70 p-2 sm:p-2.5 rounded-xl border border-brand-sand/40">
                       <span className="text-xs uppercase font-black tracking-wider text-amber-700 block select-none">
                         💖 安心加油小語
                       </span>

@@ -91,7 +91,7 @@ export const SOS_EXERCISES = [
     ]
   },
   {
-    title: '🏡 安心小基地想像',
+    title: '🏡 安心空間想像',
     description: '在腦海中勾勒一個完全屬於你、安全且溫暖的地方，讓疲憊的心靈休息。',
     quotes: [
       '想像自己正坐在最舒服的小椅子上，喝一口溫暖的水...',
