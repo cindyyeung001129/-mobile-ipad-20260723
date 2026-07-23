@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  
+  --color-brand-beige: #fefdfb; /* Extremely soft cream white for cards */
+  --color-brand-sand: #f4f1ea;  /* Organic linen backing */
+  --color-brand-sage: #6da06f;  /* Warm organic green */
+  --color-brand-moss: #5a5a40;  /* Cultured olive/charcoal forest brown */
+  --color-brand-terracotta: #df7a5e; /* Terracotta pottery red */
+  --color-brand-ochre: #ffb347; /* Sun-baked amber gold */
+}
+
+/* SEN-friendly styling & transitions */
+.focus-ring {
+  outline: 3px solid var(--color-brand-sage);
+  outline-offset: 2px;
+}
+
+body {
+  background-color: #f4f1ea;
+  color: #5a5a40;
+  font-family: var(--font-sans);
+}
+

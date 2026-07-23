@@ -1,0 +1,8 @@
+{
+  "name": "Remix: Remix: Remix: Remix: 心晴花園（mobile）20260722",
+  "description": "一個專為情緒打卡、心情日記與盆栽種植而設計的療癒手機 App，支援情緒急救與 SEN 友善介面。",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
